@@ -256,10 +256,18 @@
     const { flowStep, updateFlowStep, childMount, resetFlow, handleFlow } = useFlow(props, emit, dynCmpRef);
 
     const displayComponent = computed(() => {
-        if (props.monthPicker) return MonthPicker;
-        if (props.yearPicker) return YearPicker;
-        if (props.timePicker) return TimePickerSolo;
-        if (props.quarterPicker) return QuarterPicker;
+        if (props.monthPicker) {
+            return MonthPicker;
+        }
+        if (props.yearPicker) {
+            return YearPicker;
+        }
+        if (props.timePicker) {
+            return TimePickerSolo;
+        }
+        if (props.quarterPicker) {
+            return QuarterPicker;
+        }
         return DatePicker;
     });
 
