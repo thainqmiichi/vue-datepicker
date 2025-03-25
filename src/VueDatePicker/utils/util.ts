@@ -76,9 +76,32 @@ export const getDayNames = (formatLocale: Locale | null, locale: string, weekSta
 export const getYears = (yearRange: number[] | string[], locale: string, reverse?: boolean): IDefaultSelect[] => {
     const years: IDefaultSelect[] = [];
     for (let year = +yearRange[0]; year <= +yearRange[1]; year++) {
-        years.push({ value: +year, text: formatNumber(year, locale) });
+        years.push({ value: +year, text: formatJapaneseEra(year) });
     }
     return reverse ? years.reverse() : years;
+};
+
+export const formatJapaneseEra = (year: number | string): string => {
+    year = Number(year);
+    const eras = [
+        { name: '明治', start: 1868, symbol: 'M' },
+        { name: '大正', start: 1912, symbol: 'T' },
+        { name: '昭和', start: 1926, symbol: 'S' },
+        { name: '平成', start: 1989, symbol: 'H' },
+        { name: '令和', start: 2019, symbol: 'R' },
+    ];
+  
+    const index = eras.findIndex(
+        (e, i) => year >= e.start && (i === eras.length - 1 || year < eras[i + 1].start)
+    );
+  
+    if (index !== -1) {
+        const era = eras[index];
+        const eraYear = year - era.start + 1;
+        return `${year}(${era.name}${eraYear === 1 ? '元' : eraYear}年)`;
+    }
+  
+    return `${year}`;
 };
 
 /**

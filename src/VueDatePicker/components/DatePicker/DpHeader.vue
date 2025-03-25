@@ -58,7 +58,7 @@
                                 :text="type.text"
                                 :value="props[type.type]"
                             />
-                            <template v-if="!$slots[type.type]">{{ type.text }}</template>
+                            <template v-if="!$slots[type.type]">{{ type.type !== 'year' ? type.text : formatJapaneseEra(type.text) }}</template>
                         </button>
                         <transition :name="transitionName(type.showSelectionGrid)" :css="showTransition">
                             <SelectionOverlay
@@ -155,7 +155,7 @@
         getMinMaxYear,
         getMinMonth,
     } from '@/utils/date-utils';
-    import { checkKeyDown, checkMinMaxValue, formatNumber, groupListAndMap, unrefElement } from '@/utils/util';
+    import { checkKeyDown, checkMinMaxValue, formatNumber, groupListAndMap, unrefElement, formatJapaneseEra } from '@/utils/util';
     import { FlowStep, HeaderPicker } from '@/constants';
 
     import type { HeaderSelectionBtn, IDefaultSelect, MaybeElementRef, OverlayGridItem } from '@/interfaces';
