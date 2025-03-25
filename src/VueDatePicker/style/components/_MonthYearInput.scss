@@ -66,6 +66,7 @@
 
 .dp__month_year_select {
   width: 50%;
+  font-size: 11px !important;
 
   @extend %dp--month-year-select-base;
 }
