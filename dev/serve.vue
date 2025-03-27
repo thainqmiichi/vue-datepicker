@@ -1,6 +1,9 @@
 <template>
     <div class="wrapper">
         <Datepicker v-model="selectedDate" :format-locale="ja" />
+
+        <h1>Show Year Picker On Open</h1>
+        <Datepicker v-model="selectedDate" :format-locale="ja" :show-year-picker-on-open="true" />
     </div>
 </template>
 

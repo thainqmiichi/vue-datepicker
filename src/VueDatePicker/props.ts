@@ -155,6 +155,7 @@ export const AllProps = {
     onInternalModelChange: { type: [Function, Object] as PropType<(...args: any[]) => void>, default: null },
     enableMinutes: { type: Boolean as PropType<boolean>, default: true },
     ui: { type: Object as PropType<Partial<UIOpts>>, default: () => ({}) },
+    showYearPickerOnOpen: { type: Boolean as PropType<boolean>, default: false },
 };
 
 export const PickerBaseProps = {
